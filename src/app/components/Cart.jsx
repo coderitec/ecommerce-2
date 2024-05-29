@@ -6,7 +6,7 @@ import { MdAutoDelete } from "react-icons/md";
 
 
 export default function Cart() {
-    const { cart ,cartItems,setCartItems, setAmount } = useContext(SidebarContext)
+    const { cart, setCart ,cartItems,setCartItems, setAmount } = useContext(SidebarContext)
 
     const handleDelete = (index) => {
       const newCartItems = [...cartItems];
@@ -14,12 +14,19 @@ export default function Cart() {
       setCartItems(newCartItems);
       setAmount((prevAmount) => prevAmount - deletedItem.count);
   };
+
+  function closeCart(){
+    setCart(!cart)
+  }
   return (
     <div>
 
 {cart &&
                 <div className='absolute inset-x-1/3 w-3/5 overflow-auto h-[400px] bg-slate-800 text-yellow-50 rounded-lg shadow-2xl flex flex-col items-center justify-center py-6'>
+                  <div className='flex items-center w-full justify-around '>
                     <h2 className='py-10'>Cart</h2>
+                    <p className='bg-slate-950 p-2 text-white rounded-sm cursor-pointer' onClick={closeCart}>Close cart</p>
+                  </div>
                     <table className={styles.table}>
                       <thead>
                         <tr>
