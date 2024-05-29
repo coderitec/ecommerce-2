@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useContext, useState } from 'react'
 import { FaCross, FaHamburger } from 'react-icons/fa'
 import { SidebarContext } from '../providers'
+import Cart from './Cart'
 
 export default function Navbar() {
     const [hide, setHide] = useState(false)
@@ -26,6 +27,7 @@ export default function Navbar() {
                     <li>
                         <Link href='/'>Home</Link>
                     </li>
+                    <Cart />
                 </ul>
 
                 <ul className='sm:hidden cursor-pointer'>
